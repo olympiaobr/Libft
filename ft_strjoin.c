@@ -6,42 +6,11 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:43:11 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/15 13:04:18 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:16:16 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include <stdlib.h>
-#include <stddef.h>
-
-size_t	ft_strlen(const char *str)
-{
-	int	l;
-
-	l = 0;
-	while (str[l] != '\0')
-		l++;
-	return (l);
-}
-
-size_t	ft_strlcpy(char *destination, const char *source, size_t size)
-{
-	size_t	i;
-
-	if (!destination || !source)
-		return (0);
-	i = 0;
-	while (source[i] != '\0' && i < size - 1)
-	{
-		destination[i] = source[i];
-		i++;
-	}
-	if (size > 0)
-		destination[i] = '\0';
-	while (source[i])
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -53,7 +22,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
-
 	r = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
 	if (!r)
 		return (NULL);
@@ -61,11 +29,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy(r + l1, s2, l2 + 1);
 	return (r);
 }
-
+/*
 #include <stdio.h>
-int main() {
-    char const *s1 = "Hello, ";
-    char const *s2 = "world!";
+int main() 
+{
+    char const *s1 = "Please, ";
+    char const *s2 = "be correct!";
     char *result;
 
     result = ft_strjoin(s1, s2);
@@ -98,6 +67,6 @@ int main() {
         printf("Test 3: Failed (should not concatenate NULL)\n");
         free(result);
     }
-
     return (0);
 }
+*/

@@ -6,13 +6,13 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:22:28 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/09 17:23:12 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:31:28 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
-	if (c > 65 && c < 90)
+	if (c >= 65 && c <= 90)
 		c += 32;
 	return (c);
 }

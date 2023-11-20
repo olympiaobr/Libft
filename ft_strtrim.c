@@ -6,78 +6,11 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:56:39 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/16 16:40:02 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:47:23 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
-#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (c == 0)
-		return ((char *)s);
-	return (NULL);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	int	l;
-
-	l = 0;
-	while (str[l] != '\0')
-		l++;
-	return (l);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*dup;
-	int		i;
-
-	dup = malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
-char	*ft_substr(char const *s, unsigned int	start, size_t len)
-{
-	char	*substr;
-	size_t	i;
-	size_t	s_len; //length of input string
-
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s); //calculates length of the input string s
-	if (start >= s_len)
-		return (ft_strdup("")); //if yes,s tarting index beyond bounds of the input string s, so empty string
-	if (len > s_len - start)
-		len = s_len - start;
-	substr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!substr)
-		return (NULL); //check if mem alloc success
-	i = 0;
-	while (i < len)  //copy substring from (s) to the newly allocated memory (substr).
-	{
-		substr[i] = s[start + i];
-		i++;
-	}
-	substr[i] = '\0';
-	return (substr);
-}
+#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -96,7 +29,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	tr_len = e_i - s_i;
 	return (ft_substr(s1, s_i, tr_len));
 }
-
+/*
 #include <stdio.h>
 
 int main() 
@@ -130,3 +63,4 @@ int main()
 
     return 0;
 }
+*/

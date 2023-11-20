@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*ptr;
@@ -22,20 +24,19 @@ void	ft_bzero(void *s, size_t n)
 }
 /*
 #include <stdio.h>
-int main() {
-    // Test data
+
+int main(void) 
+{
+
     char testString[] = "Test this!";
     size_t stringLength = sizeof(testString) - 1;
 
-    // Display the original string
     printf("Original String: %s\n", testString);
 
-    // Use ft_bzero to zero out the string
     ft_bzero(testString, stringLength);
 
-    // Display the modified string
     printf("Modified String: %s\n", testString);
 
-    return 0;
+    return (0);
 }
 */

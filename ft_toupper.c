@@ -6,13 +6,13 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:21:33 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/09 17:22:14 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:38:34 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int c)
 {
-	if (c > 97 && c < 122)
+	if (c >= 97 && c <= 122)
 		c -= 32;
 	return (c);
 }

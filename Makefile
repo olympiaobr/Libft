@@ -14,38 +14,30 @@ SRCS	= ft_bzero.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint
 
 OBJS	= $(SRCS:.c=.o)
 
-BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
-BONUS_OBJS 	= $(BONUS:.c=.o)
-
 NAME	= libft.a
 
 LIBC = ar rcs
 
 RM = rm -fr
 
-CC = CC
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
 all:	${NAME}
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-		$(NAME) $(OBJS)
-		ranlib $(NAME)
+	$(LIBC)	$(NAME) $(OBJS)
 
 clean:	
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 	
 fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
 
-bonus:	$(OBJS) $(BONUS_OBJS)
-
 .PHONY:	all clean fclean re bonus
-	

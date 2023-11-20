@@ -6,19 +6,11 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:52:05 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/13 12:00:27 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:53:53 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -37,7 +29,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		i++;
 	}
 	if (dst_len + i < size)
-		dst[dst_len + i] = '\0';	
+		dst[dst_len + i] = '\0';
 	return (src_len + dst_len);
 }
 /*

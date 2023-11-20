@@ -33,16 +33,13 @@ int main() {
     char *str1 = "Galactic Odyssey";
     char *str2 = "Galactic Expedition";
     char *str3 = "Stellar Journey";
-    char *emptyStr = "";
 
-    printf("Comparing '%s' and '%s' up to 8 characters: %d\n", str1, str2, ft_strncmp(str1, str2, 8));
+    printf("%d\n", str1, str2, ft_strncmp(str1, str2, 8));
 
-    printf("Comparing '%s' and '%s' up to 10 characters: %d\n", str1, str3, ft_strncmp(str1, str3, 10));
+    printf("%d\n", str1, str3, ft_strncmp(str1, str3, 10));
 
-    printf("Comparing '%s' and '%s' up to 5 characters: %d\n", str1, emptyStr, ft_strncmp(str1, emptyStr, 5));
+    printf("%d\n", str1, emptyStr, ft_strncmp(str1, emptyStr, 5));
 
-    printf("Comparing '%s' and '%s' up to 3 characters: %d\n", emptyStr, emptyStr, ft_strncmp(emptyStr, emptyStr, 3));
-
-    return 0;
+    return (0);
 }
 */

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_is_delim(char c, char delim)
 {
@@ -72,7 +72,7 @@ static char	**ft_split_into_words(const char *s, char c, char **arr)
 		{
 			arr[j] = ft_word_dup(s + i, c);
 			if (!arr[j])
-			return (NULL);
+				return (NULL);
 			j++;
 		}
 		while (s[i] && !ft_is_delim(s[i], c))

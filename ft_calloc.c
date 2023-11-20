@@ -10,19 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stddef.h>
-// #include "libft.h"
-
-static void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)s;
-	while (n--)
-	{
-		*ptr++ = 0;
-	}
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -39,8 +27,6 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 /*
-#include <stdlib.h>
-#include <limits.h>
 #include <stdio.h>
 int main(void)
 {

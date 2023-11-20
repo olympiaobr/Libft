@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static long	ft_abs(int n)
 {
@@ -73,8 +73,6 @@ char	*ft_itoa(int n)
 }
 /*
 #include <stdio.h>
-#include <limits.h>
-#include <stdlib.h> 
 
 int main()
 {

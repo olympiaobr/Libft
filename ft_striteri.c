@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stddef.h>
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
@@ -17,7 +18,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 
 	if (!s || !f)
-		return;
+		return ;
 	i = 0;
 	while (s[i])
 	{
@@ -25,28 +26,25 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		i++;
 	}
 }
-
-void my_uppercase(unsigned int i, char *c)
+/*
+void	my_uppercase(unsigned int i, char *c)
 {
-    if (*c >= 'a' && *c <= 'z')
-    {
-        *c -= 32; // Convert to uppercase
-    }
+	(void)i;
+	*c = (char)ft_toupper((unsigned char)*c);
 }
 
 #include <stdio.h>
 
 int main(void)
 {
-    char str[] = "hello world";
+    char str[] = "uppercase me";
 
     printf("Before: %s\n", str);
 
-    // Applying ft_striteri
     ft_striteri(str, my_uppercase);
 
     printf("After: %s\n", str);
 
     return (0);
 }
-
+*/

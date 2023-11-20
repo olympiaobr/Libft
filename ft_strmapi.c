@@ -10,19 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-/*
-size_t	ft_strlen(const char *str)
-{
-	int	l;
-
-	l = 0;
-	while (str[l] != '\0')
-		l++;
-	return (l);
-}
-*/
+#include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

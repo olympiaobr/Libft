@@ -12,8 +12,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	r;
 	long	prev_r;
 
@@ -43,7 +43,7 @@ int	ft_atoi(const char *str)
 }
 /*
 #include <stdio.h>
-int main()
+int main(void)
 {
     char *str1 = "  ---+--+1234ab567";
     char *str2 = "456";
