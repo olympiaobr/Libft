@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:21:07 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/21 14:00:35 by olobresh         ###   ########.fr       */
+/*   Created: 2023/11/21 15:00:34 by olobresh          #+#    #+#             */
+/*   Updated: 2023/11/21 15:28:09 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	t_list	*mapped_l;
+	t_list	*new_n;
+
+	if (!lst || !f)
+		return (NULL);
+	mapped_l = NULL;
+	while (lst)
+	{
+		new_n = ft_lstnew(f(lst->content));
+		if (!new_n)
+		{
+			ft_lstclear(&mapped_l, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&mapped_l, new_n);
+		lst = lst->next;
+	}
+	return (mapped_l);
 }

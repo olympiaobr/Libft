@@ -6,33 +6,33 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:50:00 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/14 12:20:41 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:46:49 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    const char *last_occ;
+	const char	*last_occ;
 
-    last_occ = NULL;
-    while (*s != '\0')
-    {
-        if (*s == (char)c)
-            last_occ = (char *)s;
-        s++;
-    }
-    if ((char)c == '\0')
-        last_occ = s;
-    return ((char *)last_occ);
+	last_occ = NULL;
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			last_occ = (char *)s;
+		s++;
+	}
+	if ((char)c == '\0')
+		last_occ = s;
+	return ((char *)last_occ);
 }
 /*
 #include <stdio.h>
 
 int main()
 {
-    const char *s = "In midst of , I found there was, an invincible summer";
+    const char *s = "In midst of, I found there was, an invincible summer";
     char *last_comma;
 
     last_comma = ft_strrchr(s, ',');

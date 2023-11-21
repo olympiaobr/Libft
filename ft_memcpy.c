@@ -6,7 +6,7 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:38:06 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/10 12:59:54 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:50:00 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 #include <stdio.h>
 #include <stddef.h>
 
-int main()
+int main() 
 {
 	const char src[] = "Copied here";
 	char dest[50];

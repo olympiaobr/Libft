@@ -6,50 +6,54 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:02:03 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/14 16:12:35 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:30:41 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int gets_skipws(const char **str)
+static int	gets_skipws(const char **str)
 {
-    int sign;
+	int	sign;
 
-    sign = 1;
-    while (**str == ' ' || (**str >= '\t' && **str <= '\r'))
-    {
-        (*str)++;
-    }
-    if (**str == '-')
-    {
-        sign = -1;
-        (*str)++;
-    }
-    else if (**str == '+')
-    {
-        (*str)++;
-    }
-    return sign;
+	sign = 1;
+	while (**str == ' ' || (**str >= '\t' && **str <= '\r'))
+	{
+		(*str)++;
+	}
+	if (**str == '-')
+	{
+		sign = -1;
+		(*str)++;
+	}
+	else if (**str == '+')
+	{
+		(*str)++;
+	}
+	return (sign);
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    long r;
-    long prev_r;
-    int sign;
+	int		sign;
+	long	r;
+	long	prev_r;
 
-    r = 0;
-    sign = gets_skipws(&str);
-    while (*str >= '0' && *str <= '9')
-    {
-        prev_r = r;
-        r = r * 10 + (*str - '0');
-        if ((sign == 1 && prev_r > r) || (sign == -1 && -prev_r < -r))
-        {
-            return (sign == 1 ? -1 : 0);
-        }
-        str++;
-    }
-    return ((int)(r * sign));
+	r = 0;
+	sign = gets_skipws(&str);
+	while (*str >= '0' && *str <= '9')
+	{
+		prev_r = r;
+		r = r * 10 + (*str - '0');
+		if (sign == 1 && prev_r > r)
+		{
+			return (-1);
+		}
+		else if (sign == -1 && - prev_r < -r)
+		{
+			return (0);
+		}
+		str++;
+	}
+	return ((int)(r * sign));
 }
 /*
 #include <stdio.h>
