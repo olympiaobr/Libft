@@ -12,20 +12,20 @@
 
 #include <stddef.h>
 
-char	*ft_strrchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
-	char	*last_occ;
+    const char *last_occ;
 
-	last_occ = NULL;
-	while (*s)
-	{
-		if (*s == (char)c)
-			last_occ = (char *)s;
-		s++;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (last_occ);
+    last_occ = NULL;
+    while (*s != '\0')
+    {
+        if (*s == (char)c)
+            last_occ = (char *)s;
+        s++;
+    }
+    if ((char)c == '\0')
+        last_occ = s;
+    return ((char *)last_occ);
 }
 /*
 #include <stdio.h>

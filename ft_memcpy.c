@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*dest_str;
 	const char	*src_str;
 
+	if (!dest && !src)
+		return (NULL);
 	dest_str = (char *)dest;
 	src_str = (const char *)src;
 	byte_i = 0;
@@ -32,7 +34,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 #include <stdio.h>
 #include <stddef.h>
 
-int main() 
+int main()
 {
 	const char src[] = "Copied here";
 	char dest[50];

@@ -10,36 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+static int gets_skipws(const char **str)
 {
-	int		i;
-	int		sign;
-	long	r;
-	long	prev_r;
+    int sign;
 
-	i = 0;
-	sign = 1;
-	r = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		prev_r = r;
-		r = r * 10 + (str[i] - '0');
-		if (sign == 1 && prev_r > r)
-			return (0);
-		if (sign == -1 && - prev_r < -r)
-			return (-1);
-		i++;
-	}
-	return ((int)(r * sign));
+    sign = 1;
+    while (**str == ' ' || (**str >= '\t' && **str <= '\r'))
+    {
+        (*str)++;
+    }
+    if (**str == '-')
+    {
+        sign = -1;
+        (*str)++;
+    }
+    else if (**str == '+')
+    {
+        (*str)++;
+    }
+    return sign;
+}
+
+int ft_atoi(const char *str)
+{
+    long r;
+    long prev_r;
+    int sign;
+
+    r = 0;
+    sign = gets_skipws(&str);
+    while (*str >= '0' && *str <= '9')
+    {
+        prev_r = r;
+        r = r * 10 + (*str - '0');
+        if ((sign == 1 && prev_r > r) || (sign == -1 && -prev_r < -r))
+        {
+            return (sign == 1 ? -1 : 0);
+        }
+        str++;
+    }
+    return ((int)(r * sign));
 }
 /*
 #include <stdio.h>

@@ -12,30 +12,34 @@
 
 #include <stddef.h>
 
-size_t	ft_strlcpy(char *destination, const char *source, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+    size_t src_len;
+    size_t i;
 
-	if (!destination || !source)
-		return (0);
-	i = 0;
-	while (source[i] != '\0' && i < size - 1)
-	{
-		destination[i] = source[i];
-		i++;
-	}
-	if (size > 0)
-		destination[i] = '\0';
-	while (source[i])
-		i++;
-	return (i);
+    if (!dst || !src)
+        return (0);
+    src_len = 0;
+    while (src[src_len])
+        src_len++;
+    if (size == 0)
+        return (src_len);
+    i = 0;
+    while (src[i] != '\0' && i < size - 1)
+    {
+        dst[i] = src[i];
+        i++;
+    }
+    if (size > 0)
+        dst[i] = '\0';
+    return (src_len);
 }
 /*
 #include <stddef.h>
 #include <stdio.h>
 #include <stddef.h>
 
-int main() 
+int main()
 {
     char source[] = "Badumts";
     char destination[50];
