@@ -12,49 +12,77 @@
 
 #include "libft.h"
 
-static void	free_split_array(char **arr)
+static int	ft_is_delim(char c, char delim)
 {
-	int i;
+	return (c == delim);
+}
 
+static int	ft_word_count(const char *s, char c)
+{
+	int	count;
+	int	i;
+
+	count = 0;
 	i = 0;
-	while (arr[i])
+	while (s[i])
 	{
-		free(arr[i]);
-		i++;
+		while (ft_is_delim(s[i], c) && s[i])
+			i++;
+		if (!ft_is_delim(s[i], c) && s[i])
+			count++;
+		while (!ft_is_delim(s[i], c) && s[i])
+			i++;
 	}
+	return (count);
+}
+
+static char	*ft_word_dup(const char *s, char c)
+{
+	char	*word;
+	int		len;
+
+	len = 0;
+	while (s[len] && !ft_is_delim(s[len], c))
+		len++;
+	word = (char *)malloc(sizeof(*word) * (len + 1));
+	if (!word)
+		return (NULL);
+	len = 0;
+	while (s[len] && !ft_is_delim(s[len], c))
+		word[len++] = s[len];
+	word[len] = '\0';
+	return (word);
+}
+
+static void	free_split_array(char **arr, int n)
+{
+	while (n-- > 0)
+		free(arr[n]);
 	free(arr);
 }
 
-static char	**split_words(const char *s, char c, char **arr)
+static char	**create_split(const char *s, char c, char **arr)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while (s[i] && ft_is_delim(s[i], c))
-		i++;
-	if (!s[i])
+	while (s[i])
 	{
-		arr[j] = NULL;
-		return (arr);
+		if (!ft_is_delim(s[i], c))
+		{
+			arr[j++] = ft_word_dup(s + i, c);
+			if (!arr[j - 1])
+				return (NULL);
+			while (s[i] && !ft_is_delim(s[i], c))
+				i++;
+		}
+		else
+			i++;
 	}
-	arr[j] = ft_word_dup(s + i, c);
-	if (!arr[j])
-		return (NULL);
-	return (split_words(s + i, c, arr + 1));
-}
-
-static char	**ft_split_into_words(const char *s, char c, char **arr)
-{
-	while (*s && ft_is_delim(*s, c))
-		s++;
-	if (!*s)
-	{
-		arr[0] = NULL;
-		return (arr);
-	}
-	return (split_words(s, c, arr));
+	arr[j] = NULL;
+	return (arr);
 }
 
 char	**ft_split(const char *s, char c)
@@ -66,7 +94,12 @@ char	**ft_split(const char *s, char c)
 	arr = (char **)malloc(sizeof(*arr) * (ft_word_count(s, c) + 1));
 	if (!arr)
 		return (NULL);
-	return (ft_split_into_words(s, c, arr));
+	if (!create_split(s, c, arr))
+	{
+		free_split_array(arr, ft_word_count(s, c));
+		return (NULL);
+	}
+	return (arr);
 }
 /*
 #include <stdio.h>
