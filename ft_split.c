@@ -12,87 +12,86 @@
 
 #include "libft.h"
 
-static int  ft_is_delim(char c, char delim)
+static int	ft_is_delim(char c, char delim)
 {
-    return (c == delim);
+	return (c == delim);
 }
 
-static int  ft_word_count(const char *s, char c)
+static int	ft_word_count(const char *s, char c)
 {
-    int count;
-    int i;
+	int	count;
+	int	i;
 
-    count = 0;
-    i = 0;
-    while (s[i])
-    {
-        while (ft_is_delim(s[i], c) && s[i])
-            i++;
-        if (!ft_is_delim(s[i], c) && s[i])
-            count++;
-        while (!ft_is_delim(s[i], c) && s[i])
-            i++;
-    }
-    return (count);
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		while (ft_is_delim(s[i], c) && s[i])
+			i++;
+		if (!ft_is_delim(s[i], c) && s[i])
+			count++;
+		while (!ft_is_delim(s[i], c) && s[i])
+			i++;
+	}
+	return (count);
 }
 
-static char *ft_word_dup(const char *s, int start, int end)
+static char	*ft_word_dup(const char *s, char c)
 {
-    char    *word;
-    int     i;
+	char	*word;
+	int		len;
 
-    word = (char *)malloc(sizeof(*word) * (end - start + 1));
-    if (!word)
-        return (NULL);
-    i = 0;
-    while (start < end)
-        word[i++] = s[start++];
-    word[i] = '\0';
-    return (word);
+	len = 0;
+	while (s[len] && !ft_is_delim(s[len], c))
+		len++;
+	word = (char *)malloc(sizeof(*word) * (len + 1));
+	if (!word)
+		return (NULL);
+	len = 0;
+	while (s[len] && !ft_is_delim(s[len], c))
+	{
+		word[len] = s[len];
+		len++;
+	}
+	word[len] = '\0';
+	return (word);
 }
 
-static char	**fill_split_array(const char *s, char c, char **arr)
+static char	**ft_split_into_words(const char *s, char c, char **arr)
 {
 	int	i;
 	int	j;
-	int	start;
 
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
-		if (!ft_is_delim(s[i], c))
+		while (s[i] && ft_is_delim(s[i], c))
+			i++;
+		if (s[i])
 		{
-			start = i;
-			while (s[i] && !ft_is_delim(s[i], c))
-				i++;
-			arr[j] = ft_word_dup(s, start, i);
+			arr[j] = ft_word_dup(s + i, c);
 			if (!arr[j])
 				return (NULL);
 			j++;
 		}
-		else
+		while (s[i] && !ft_is_delim(s[i], c))
 			i++;
 	}
 	arr[j] = NULL;
 	return (arr);
 }
 
-char **ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
-	char **arr;
+	char	**arr;
 
+	if (!s)
+		return (NULL);
 	arr = (char **)malloc(sizeof(*arr) * (ft_word_count(s, c) + 1));
 	if (!arr)
 		return (NULL);
-	if (!fill_split_array(s, c, arr))
-	{
-		while (*arr)
-			free(*arr++);
-		free(arr);
-		return (NULL);
-	}
-	return (arr);
+	return (ft_split_into_words(s, c, arr));
 }
 /*
 #include <stdio.h>
