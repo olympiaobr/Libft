@@ -12,59 +12,50 @@
 
 #include "libft.h"
 
-static int	ft_is_delim(char c, char delim)
+static int  ft_is_delim(char c, char delim)
 {
-	return (c == delim);
+    return (c == delim);
 }
 
-static int	ft_word_count(const char *s, char c)
+static int  ft_word_count(const char *s, char c)
 {
-	int	count;
+    int count;
+    int i;
+
+    count = 0;
+    i = 0;
+    while (s[i])
+    {
+        while (ft_is_delim(s[i], c) && s[i])
+            i++;
+        if (!ft_is_delim(s[i], c) && s[i])
+            count++;
+        while (!ft_is_delim(s[i], c) && s[i])
+            i++;
+    }
+    return (count);
+}
+
+static char *ft_word_dup(const char *s, int start, int end)
+{
+    char    *word;
+    int     i;
+
+    word = (char *)malloc(sizeof(*word) * (end - start + 1));
+    if (!word)
+        return (NULL);
+    i = 0;
+    while (start < end)
+        word[i++] = s[start++];
+    word[i] = '\0';
+    return (word);
+}
+
+static char	**fill_split_array(const char *s, char c, char **arr)
+{
 	int	i;
-
-	count = 0;
-	i = 0;
-	while (s[i])
-	{
-		while (ft_is_delim(s[i], c) && s[i])
-			i++;
-		if (!ft_is_delim(s[i], c) && s[i])
-			count++;
-		while (!ft_is_delim(s[i], c) && s[i])
-			i++;
-	}
-	return (count);
-}
-
-static char	*ft_word_dup(const char *s, char c)
-{
-	char	*word;
-	int		len;
-
-	len = 0;
-	while (s[len] && !ft_is_delim(s[len], c))
-		len++;
-	word = (char *)malloc(sizeof(*word) * (len + 1));
-	if (!word)
-		return (NULL);
-	len = 0;
-	while (s[len] && !ft_is_delim(s[len], c))
-		word[len++] = s[len];
-	word[len] = '\0';
-	return (word);
-}
-
-static void	free_split_array(char **arr, int n)
-{
-	while (n-- > 0)
-		free(arr[n]);
-	free(arr);
-}
-
-static char	**create_split(const char *s, char c, char **arr)
-{
-	int i;
-	int j;
+	int	j;
+	int	start;
 
 	i = 0;
 	j = 0;
@@ -72,11 +63,13 @@ static char	**create_split(const char *s, char c, char **arr)
 	{
 		if (!ft_is_delim(s[i], c))
 		{
-			arr[j++] = ft_word_dup(s + i, c);
-			if (!arr[j - 1])
-				return (NULL);
+			start = i;
 			while (s[i] && !ft_is_delim(s[i], c))
 				i++;
+			arr[j] = ft_word_dup(s, start, i);
+			if (!arr[j])
+				return (NULL);
+			j++;
 		}
 		else
 			i++;
@@ -85,18 +78,18 @@ static char	**create_split(const char *s, char c, char **arr)
 	return (arr);
 }
 
-char	**ft_split(const char *s, char c)
+char **ft_split(const char *s, char c)
 {
 	char **arr;
 
-	if (!s)
-		return (NULL);
 	arr = (char **)malloc(sizeof(*arr) * (ft_word_count(s, c) + 1));
 	if (!arr)
 		return (NULL);
-	if (!create_split(s, c, arr))
+	if (!fill_split_array(s, c, arr))
 	{
-		free_split_array(arr, ft_word_count(s, c));
+		while (*arr)
+			free(*arr++);
+		free(arr);
 		return (NULL);
 	}
 	return (arr);
