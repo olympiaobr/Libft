@@ -65,7 +65,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		len++;
 	r = (char *)malloc(sizeof(char) * (len + 1));
-	if (r == NULL)
+	if (!r)
 		return (NULL);
 	r[len] = '\0';
 	ft_fillstr(r, abs_val, len, n);

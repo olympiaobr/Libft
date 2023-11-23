@@ -31,29 +31,19 @@ static int	gets_skipws(const char **str)
 	return (sign);
 }
 
-int	ft_atoi(const char *str)
+int ft_atoi(const char *str)
 {
-	int		sign;
-	long	r;
-	long	prev_r;
+    int sign;
+    int r;
 
-	r = 0;
-	sign = gets_skipws(&str);
-	while (*str >= '0' && *str <= '9')
-	{
-		prev_r = r;
-		r = r * 10 + (*str - '0');
-		if (sign == 1 && prev_r > r)
-		{
-			return (-1);
-		}
-		else if (sign == -1 && - prev_r < -r)
-		{
-			return (0);
-		}
-		str++;
-	}
-	return ((int)(r * sign));
+    r = 0;
+    sign = get_skipws(&str);
+    while (*str >= '0' && *str <= '9')
+    {
+        r = r * 10 + (*str - '0');
+        str++;
+    }
+    return r * sign;
 }
 /*
 #include <stdio.h>
