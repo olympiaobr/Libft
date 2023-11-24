@@ -6,7 +6,7 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:24:17 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/14 15:33:04 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:08:25 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,18 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 /*
 #include <stdio.h>
 
-int ft_strncmp(const char *s1, const char *s2, size_t n);
+int main() 
+{
+	char *str1 = "Galactic Odyssey";
+    	char *str2 = "Galactic Expedition";
+    	char *str3 = "Stellar Journey";
 
-int main() {
-    char *str1 = "Galactic Odyssey";
-    char *str2 = "Galactic Expedition";
-    char *str3 = "Stellar Journey";
+    	printf("%d\n", str1, str2, ft_strncmp(str1, str2, 8));
 
-    printf("%d\n", str1, str2, ft_strncmp(str1, str2, 8));
+    	printf("%d\n", str1, str3, ft_strncmp(str1, str3, 10));
 
-    printf("%d\n", str1, str3, ft_strncmp(str1, str3, 10));
+   	printf("%d\n", str1, emptyStr, ft_strncmp(str1, emptyStr, 5));
 
-    printf("%d\n", str1, emptyStr, ft_strncmp(str1, emptyStr, 5));
-
-    return (0);
+    	return (0);
 }
 */

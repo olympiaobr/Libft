@@ -6,7 +6,7 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:50:42 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/10 14:22:51 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:39:16 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,18 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 }
 /*
 #include <stdio.h>
-#include <string.h>
-#include <stddef.h>
 
-int main() {
-    char source[] = "Handle overlap";
-    char destination[20];
+int main() 
+{
+    	char source[] = "Handle overlap";
+	char destination[20];
 
-    memmove(destination, source, strlen(source) + 1);
-    printf("Standard memmove result: %s\n", destination);
+	memmove(destination, source, strlen(source) + 1);
+    	printf("Standard memmove result: %s\n", destination);
 
-    ft_memmove(destination, source, strlen(source) + 1);
-    printf("Custom ft_memmove result: %s\n", destination);
-
-    return 0;
+    	ft_memmove(destination, source, strlen(source) + 1);
+    	printf("Custom ft_memmove result: %s\n", destination);
+	
+	return (0);
 }
 */

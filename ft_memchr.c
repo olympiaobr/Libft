@@ -6,7 +6,7 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:49:12 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/13 10:53:16 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:37:38 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (NULL);
 }
 /*
-#include <stddef.h>
 #include <stdio.h>
-#include <string.h>
 
 int main()
 {

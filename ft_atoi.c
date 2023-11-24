@@ -6,7 +6,7 @@
 /*   By: olobresh <olobresh@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:02:03 by olobresh          #+#    #+#             */
-/*   Updated: 2023/11/21 12:30:41 by olobresh         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:10:16 by olobresh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ static int	gets_skipws(const char **str)
 	return (sign);
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    int sign;
-    int r;
+	int		sign;
+	long	r;
 
-    r = 0;
-    sign = get_skipws(&str);
-    while (*str >= '0' && *str <= '9')
-    {
-        r = r * 10 + (*str - '0');
-        str++;
-    }
-    return r * sign;
+	r = 0;
+	sign = gets_skipws(&str);
+	while (*str >= '0' && *str <= '9')
+	{
+		r = r * 10 + (*str - '0');
+		str++;
+	}
+	return (r * sign);
 }
 /*
 #include <stdio.h>
